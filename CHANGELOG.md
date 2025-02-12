@@ -1203,6 +1203,7 @@ All notable changes to this project will be documented in this file.
 - *(services)* Reword nitropage url and slogan
 - *(readme)* Add Convex to special sponsors section
 - Update changelog
+- Update changelog
 
 ### 🎨 Styling
 
