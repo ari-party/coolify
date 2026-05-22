@@ -72,7 +72,7 @@ class ProductionSeeder extends Seeder
             ]);
         }
 
-        if (! isCloud() && config('constants.coolify.is_windows_docker_desktop') == false) {
+        if (! isCloud() && ! isRemoteOnly() && config('constants.coolify.is_windows_docker_desktop') == false) {
             $coolify_key_name = '@host.docker.internal';
             $ssh_keys_directory = Storage::disk('ssh-keys')->files();
             $coolify_key = collect($ssh_keys_directory)->firstWhere(fn ($item) => str($item)->contains($coolify_key_name));
@@ -99,7 +99,7 @@ class ProductionSeeder extends Seeder
             }
         }
 
-        if (! isCloud()) {
+        if (! isCloud() && ! isRemoteOnly()) {
             if (Server::find(0) == null) {
                 $server_details = [
                     'id' => 0,
@@ -146,7 +146,7 @@ class ProductionSeeder extends Seeder
             }
         }
 
-        if (config('constants.coolify.is_windows_docker_desktop')) {
+        if (config('constants.coolify.is_windows_docker_desktop') && ! isRemoteOnly()) {
             PrivateKey::updateOrCreate(
                 [
                     'id' => 0,

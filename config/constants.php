@@ -7,6 +7,7 @@ return [
         'realtime_version' => '1.0.15',
         'railpack_version' => '0.23.0',
         'self_hosted' => env('SELF_HOSTED', true),
+        'remote_only' => env('COOLIFY_REMOTE_ONLY', false),
         'autoupdate' => env('AUTOUPDATE'),
         'base_config_path' => env('BASE_CONFIG_PATH', '/data/coolify'),
         'registry_url' => env('REGISTRY_URL', 'ghcr.io'),
